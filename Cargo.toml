@@ -1,0 +1,8 @@
+[package]
+name = "jfxr"
+version = "0.1.0"
+edition = "2021"
+authors = ["Aurel300", "ttencate"]
+description = "Rust port of the jfxr sound effect generation tool/library."
+
+[dependencies]
