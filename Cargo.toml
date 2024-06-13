@@ -6,3 +6,8 @@ authors = ["Aurel300", "ttencate"]
 description = "Rust port of the jfxr sound effect generation tool/library."
 
 [dependencies]
+json = { version = "0.12", optional = true }
+
+[features]
+default = ["json"]
+json = ["dep:json"]

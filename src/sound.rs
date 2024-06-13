@@ -1,5 +1,7 @@
 #[derive(Clone, Default)]
 pub struct Sound {
+    pub name: String,
+
     pub sample_rate: crate::parameter::SampleRate,
     pub attack: crate::parameter::Attack,
     pub sustain: crate::parameter::Sustain,

@@ -32,7 +32,13 @@ impl<'a> Synth<'a> {
         }
     }
 
-    pub fn tick(&mut self) -> bool {
+    /// Generates a single block of sample data. This function modifies the
+    /// internal state of the synth. This function returns `false` while there
+    /// are more samples to generate. It returns `true` once all samples have
+    /// been generated, at which point the final sample data can be obtained
+    /// with a call to [`Self::generate`]. Further calls to this function have
+    /// no effect.
+    pub fn generate_block(&mut self) -> bool {
         let num_samples = self.array.len();
 
         if self.start_sample >= num_samples {
@@ -48,8 +54,9 @@ impl<'a> Synth<'a> {
         self.start_sample >= num_samples
     }
 
+    /// Ensures all sample data is generated, then returns it as a vector.
     pub fn generate(mut self) -> Vec<f64> {
-        while !self.tick() {}
+        while !self.generate_block() {}
         self.array
     }
 }
